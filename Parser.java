@@ -10,7 +10,7 @@ public class Parser {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             
         	String sizeLine = reader.readLine();
-        	int d = Integer.parseInt(sizeLine.trim());
+        	int d = Integer.parseInt(sizeLine.trim()); //Size of Maze
         	Maze maze = new Maze(d);
         	
         	for (int i = 0; i < d; i++) {
