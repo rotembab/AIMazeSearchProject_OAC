@@ -22,5 +22,9 @@ public class Main {
 		GreedySearch greedy = new GreedySearch(maze);
 		Solution solution3 = greedy.search();
 		solution3.print();
+		
+		
+		//TODO: MAKE A FILE OF HOW TO USE THIS WITH OUTPUT EXAMPLES.
+		
 	}
 }

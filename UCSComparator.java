@@ -6,6 +6,10 @@ public class UCSComparator implements Comparator<Path> {
 	public int compare(Path p1, Path p2) {
 		// your implementation...
 		//Compare the 2 paths with only the cost of each.
-		return 0;
+		
+		int c1 = p1.getCostSoFar();
+		int c2 = p2.getCostSoFar();
+		
+		return c1-c2;
 	}
 }
