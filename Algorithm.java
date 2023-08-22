@@ -16,14 +16,15 @@ public class Algorithm {
 		this.maze = maze;
 	}
 	
-	public Solution search() {
+	public Solution search() {//TODO: EDIT THIS FUNCTION
+		Solution s = new Solution();
 		
 		while(!frontier.isEmpty()){
 			Path currentState = frontier.remove();
 			if(!visited.contains(currentState)) {
 				visited.add(currentState);
 				if(Goal.equals(currentState)) {
-					//return currentState; //TODO: EDIT THIS FUNCTION
+					return s; 
 				}
 				for (Path p : currentState.getChildren()) {
 					frontier.add(p);

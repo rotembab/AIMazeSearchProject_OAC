@@ -16,5 +16,5 @@ public class Maze {
 	}
 
 
-	//We need a method for get Path's childs
+	//We need a method for get all of Path's childs
 }
