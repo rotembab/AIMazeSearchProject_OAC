@@ -14,7 +14,8 @@ public class Algorithm {
 		PriorityQueue<Path> frontier = new PriorityQueue<Path>(comparator);
 		
 		// algorithm...
-		
+		//I only need to write this here and the algorithm will execute on all searches
+
 		return null;
 	}
 }
