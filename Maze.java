@@ -10,6 +10,7 @@ public class Maze {
 	}
 
 	//boolean b is for BLOCKED Path
+	
 	public void set(int i, int j, boolean b) {
 		maze[i][j] = b;
 	}
