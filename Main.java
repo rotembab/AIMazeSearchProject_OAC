@@ -23,7 +23,6 @@ public class Main {
 		Solution solution3 = greedy.search();
 		solution3.print();
 		
-		
 		//TODO: MAKE A FILE OF HOW TO USE THIS WITH OUTPUT EXAMPLES.
 		
 	}

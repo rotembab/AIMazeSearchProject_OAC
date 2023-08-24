@@ -3,44 +3,44 @@ import java.util.Set;
 
 public class Path {
     //This is a Path node
-    private int x;
-	private int y;
+    private int i;
+	private int j;
     private double heuristicDistance;
     private Set<Path> children = new HashSet<Path>(); //Contains all children
     private int CostSoFar;
+    private Path parent;
     
-    public Path(int x,int y) {
-    	this.x=x;
-    	this.y=y;
-    	
-    	//TODO: ADD MORE THINGS IN HERE
+    public Path getParent() {
+		return parent;
+	}
+
+	public Path(int i,int j,Path parent) {
+    	this.i=i;
+    	this.j=j;
+    	this.parent=parent;
+    	if(parent!=null)
+    		this.CostSoFar = parent.getCostSoFar()+1;
+    	else {
+    		this.CostSoFar=0; //Root of the tree
+    	}
     }
     
-    public int getX() {
-		return x;
+    public int getI() {
+		return i;
 	}
 
-	public void setX(int x) {
-		this.x = x;
+	public int getJ() {
+		return j;
 	}
 
-	public int getY() {
-		return y;
-	}
 
-	public void setY(int y) {
-		this.y = y;
-	}
-
-	public double getHeuristicDistance() {
+	public double getHeuristicDistance() {//Calculates the heuristic and returns it
+		this.heuristicDistance=Maze.calculateHeurisitc(this);
 		return heuristicDistance;
 	}
-
-	public void setHeuristicDistance(double heuristicDistance) {
-		this.heuristicDistance = heuristicDistance;
-	}
     
-    public Set<Path> getChildren(){
+    public Set<Path> getChildren(){ //Get the children nodes from Maze and returns them
+    	children = Maze.createPathChildren(this);
     	return children;
     }
     
@@ -48,8 +48,5 @@ public class Path {
     	return CostSoFar;
     }
     
-    public boolean equals(Path p) {
-    	return (p.x==this.x && p.y==this.y);
-    }
     
 }

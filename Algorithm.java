@@ -23,7 +23,8 @@ public class Algorithm {
 			Path currentState = frontier.remove();
 			if(!visited.contains(currentState)) {
 				visited.add(currentState);
-				if(Goal.equals(currentState)) {
+				if(Maze.GoalI==currentState.getI()&& Maze.GoalJ==currentState.getJ()) {
+					s.setGoal(currentState);
 					return s; 
 				}
 				for (Path p : currentState.getChildren()) {
