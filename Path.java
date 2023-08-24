@@ -48,5 +48,13 @@ public class Path {
     	return CostSoFar;
     }
     
+    public boolean equals(Path p) {
+    	return p.getI()==this.i&&p.getJ()==this.j;
+    }
+    
+    public String toString() {
+    	return "("+(this.i+1)+","+(this.j+1)+")";
+    }
+    
     
 }

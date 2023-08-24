@@ -3,11 +3,18 @@ import java.util.Set;
 
 public class Maze {
 
-	private boolean[][] maze;
+	private static boolean[][] maze;
 	private static int d;
 	private Path Start;
 	public static int GoalI;
 	public static  int GoalJ;
+	private static int[][] directions = {
+		    {-1, 0},  // Up
+		    {1, 0},   // Down
+		    {0, -1},  // Left
+		    {0, 1}    // Right
+	};
+	
 	
 	public Maze(int d) {
 		this.d = d;
@@ -22,27 +29,33 @@ public class Maze {
 	public void set(int i, int j, boolean b) {
 		maze[i][j] = b;
 	}
+	public Path getStart() {
+		return Start;
+	}
+	
+	
+	
 	
 	public static Set<Path> createPathChildren(Path p) { 
+		
 		Set<Path> children = new HashSet<Path>();
-		if(p.getI()>0) {//Up Child
-			Path addP = new Path(p.getI()-1,p.getJ(),p);
-			children.add(addP);
-		}
-		if(p.getI()<d) {//Down Child
-			Path addP = new Path(p.getI()+1,p.getJ(),p);
-			children.add(addP);
-		}
-		if(p.getJ()>0){//Left Child
-			Path addP = new Path(p.getI(),p.getJ()-1,p);
-			children.add(addP);
-		}if(p.getJ()<d) {//Right Child
-			Path addP = new Path(p.getI(),p.getJ()+1,p);
-			children.add(addP);
+		for (int[] direction : directions) {
+		    int newI = p.getI() + direction[0];
+		    int newJ = p.getJ() + direction[1];
+		    
+		    if (isValid(newI, newJ, d-1)) {
+		    	Path addP = new Path(newI, newJ, p);
+		    	if(p.getParent()!=null && p.getParent().equals(addP))
+		    		children.add(p.getParent());
+		    	else
+		    		children.add(addP);
+		    }
 		}
 		return children;
 	}
-	
+	private static boolean isValid(int i, int j, int bound) {
+	    return ((i >= 0) && (i <= bound)&& (j >= 0) && (j <= bound)&&(maze[i][j]!=true));
+	}
 	
 	public static double calculateHeurisitc(Path p) {
 		

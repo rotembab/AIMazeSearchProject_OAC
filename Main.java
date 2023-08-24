@@ -5,9 +5,8 @@ public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		Parser parser = new Parser(); //Parse the input to a maze
+		Parser parser = new Parser(); //Parse the input to a maze	
 		Maze maze = parser.parse(args[0]); //this is the maze to go through
-		
 		System.out.print("Astar ");
 		AStarSearch astar = new AStarSearch(maze);
 		Solution solution1 = astar.search();
